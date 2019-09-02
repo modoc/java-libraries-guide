@@ -1,0 +1,1 @@
+require('gitbook-to-gh-pages')()
