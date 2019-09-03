@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>集合 · GitBook</title>
+        <title>创建Map · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,10 +73,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="iterable2iterable.html" />
+    <link rel="next" href="../primitive/" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="iterable2array.html" />
     
 
     </head>
@@ -138,7 +138,7 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="./">
+        <li class="chapter " data-level="2.1" data-path="./">
             
                 <a href="./">
             
@@ -184,7 +184,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="mapnew.html">
+        <li class="chapter active" data-level="2.1.3" data-path="mapnew.html">
             
                 <a href="mapnew.html">
             
@@ -270,7 +270,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >集合</a>
+        <a href=".." >创建Map</a>
     </h1>
 </div>
 
@@ -285,9 +285,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x96C6;&#x5408;&#x5DE5;&#x5177;">&#x96C6;&#x5408;&#x5DE5;&#x5177;</h1>
-<p>&#x5305;&#x542B;&#x6240;&#x6709;&#x96C6;&#x5408;&#xFF08;&#x5305;&#x62EC;Map&#xFF09;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x3001;&#x64CD;&#x4F5C;&#x5DE5;&#x5177;&#x3002;</p>
-
+                                <h2 id="map&#x7684;&#x521B;&#x5EFA;">Map&#x7684;&#x521B;&#x5EFA;</h2>
+<!-- toc -->
+<ul>
+<li><a href="#&#x7528;kv&#x5BF9;&#x521B;&#x5EFA;">&#x7528;KV&#x5BF9;&#x521B;&#x5EFA;</a></li>
+</ul>
+<!-- toc stop -->
+<h3 id="&#x7528;kv&#x5BF9;&#x521B;&#x5EFA;">&#x7528;KV&#x5BF9;&#x521B;&#x5EFA;</h3>
+<p>Map&#x7684;&#x521B;&#x5EFA;&#x672C;&#x8EAB;&#x5F88;&#x7B80;&#x5355;&#xFF0C;new&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#x5C31;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x60F3;&#x5728;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x586B;&#x5145;KV&#x5BF9;&#xFF0C;&#x5C31;&#x4F1A;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5728;&#x5B9A;&#x4E49;&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x7528;&#x5DE5;&#x5177;&#xFF0C;&#x9700;&#x8981;&#xFF08;<code>Java8</code>&#x53CA;&#x4EE5;&#x4E0B;&#xFF09;&#xFF1A;</p>
+<pre><code>// Java9&#x4EE5;&#x540E;&#x8BF7;&#x76F4;&#x63A5;&#x7528;Map.of(...)
+private static Map&lt;K, V&gt; map = new HashMap&lt;&gt;();
+static {
+    map.put(k1, v1);
+}
+</code></pre><p>&#x5982;&#x679C;&#x521D;&#x59CB;&#x5316;&#x7684;KV&#x5BF9;&#x5728;5&#x5BF9;&#x4EE5;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;<code>guava</code>&#x4E2D;&#x7684;&#xFF1A;</p>
+<pre><code>// import com.google.common.collect.ImmutableMap
+private static Map&lt;K, V&gt; map = ImmutableMap.of(k1, k1);
+</code></pre><p>&#x5982;&#x679C;kv&#x5BF9;&#x5728;6&#x5BF9;&#x4EE5;&#x4E0A;&#xFF0C;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>// import com.google.common.collect.ImmutableMap
+private static Map&lt;K, V&gt; map = ImmutableMap.&lt;K, V&gt;builder()
+    .put(k1, v1)
+    .put(k2, v2)
+    // ... 
+    .put(kn, vn)
+    .build();
+</code></pre><p>&#x4F46;&#x662F;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x6837;&#x521B;&#x5EFA;&#x7684;Map&#x662F;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x7684;Map&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x5B8C;&#x6210;&#x5957;&#x4E0A;<code>new XxxMap&lt;&gt;(...)</code>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x9879;&#x76EE;&#x5DF2;&#x7ECF;&#x5347;&#x7EA7;&#x5230;<code>Java9</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x4E8B;&#x60C5;&#x5C31;&#x66F4;&#x7B80;&#x5355;&#xFF0C;10&#x5BF9;KV&#x4EE5;&#x4E0B;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>private static Map&lt;K, V&gt; map = Map.of(k1, k1);
+</code></pre>
                                 
                                 </section>
                             
@@ -314,12 +339,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 扔掉自己造的轮子">
+                <a href="iterable2array.html" class="navigation navigation-prev " aria-label="Previous page: Iterable到Array">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="iterable2iterable.html" class="navigation navigation-next " aria-label="Next page: Iterable到Iterable">
+                <a href="../primitive/" class="navigation navigation-next " aria-label="Next page: 基础数据类型及包装类">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -330,7 +355,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"集合","level":"2.1","depth":1,"next":{"title":"Iterable到Iterable","level":"2.1.1","depth":2,"path":"collection/iterable2iterable.md","ref":"collection/iterable2iterable.md","articles":[]},"previous":{"title":"扔掉自己造的轮子","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["multipart","theme-comscore","-sharing","-lunr","-search","search-plus","toc2","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toc2":{},"multipart":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":1},"highlight":{},"theme-comscore":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Project Home":"https://github.com/modoc/java-libraries-guide"}},"gitbook":"*"},"file":{"path":"collection/README.md","mtime":"2019-09-02T08:02:44.849Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T03:10:36.452Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"创建Map","level":"2.1.3","depth":2,"next":{"title":"基础数据类型及包装类","level":"2.2","depth":1,"path":"primitive/README.md","ref":"primitive/README.md","articles":[{"title":"Boolean","level":"2.2.1","depth":2,"path":"primitive/boolean.md","ref":"primitive/boolean.md","articles":[]}]},"previous":{"title":"Iterable到Array","level":"2.1.2","depth":2,"path":"collection/iterable2array.md","ref":"collection/iterable2array.md","articles":[]},"dir":"ltr"},"config":{"plugins":["multipart","theme-comscore","-sharing","-lunr","-search","search-plus","toc2","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toc2":{},"multipart":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":1},"highlight":{},"theme-comscore":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Project Home":"https://github.com/modoc/java-libraries-guide"}},"gitbook":"*"},"file":{"path":"collection/mapnew.md","mtime":"2019-09-03T03:00:41.309Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T03:10:36.452Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

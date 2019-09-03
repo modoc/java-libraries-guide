@@ -73,6 +73,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="iterable2array.html" />
+    
     
     <link rel="prev" href="./" />
     
@@ -167,6 +169,72 @@
             
         </li>
     
+        <li class="chapter " data-level="2.1.2" data-path="iterable2array.html">
+            
+                <a href="iterable2array.html">
+            
+                    
+                        <b>2.1.2.</b>
+                    
+                    Iterable到Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="mapnew.html">
+            
+                <a href="mapnew.html">
+            
+                    
+                        <b>2.1.3.</b>
+                    
+                    创建Map
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../primitive/">
+            
+                <a href="../primitive/">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    基础数据类型及包装类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../primitive/boolean.html">
+            
+                <a href="../primitive/boolean.html">
+            
+                    
+                        <b>2.2.1.</b>
+                    
+                    Boolean
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -217,7 +285,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="iterable&#x5230;iterable">Iterable&#x5230;Iterable</h2>
+<!-- toc -->
+<ul>
+<li><a href="#listf&#x8F6C;&#x5316;&#x4E3A;listt">List[F]&#x8F6C;&#x5316;&#x4E3A;List[T]</a></li>
+<li><a href="#liste&#x8FC7;&#x6EE4;&#x4E3A;liste">List[E]&#x8FC7;&#x6EE4;&#x4E3A;List[E]</a></li>
+<li><a href="#setf&#x8F6C;&#x5316;&#x4E3A;sett">Set[F]&#x8F6C;&#x5316;&#x4E3A;Set[T]</a></li>
+<li><a href="#sete&#x8FC7;&#x6EE4;&#x4E3A;sete">Set[E]&#x8FC7;&#x6EE4;&#x4E3A;Set[E]</a></li>
+</ul>
+<!-- toc stop -->
+<h3 id="listf&#x8F6C;&#x5316;&#x4E3A;listt">List[F]&#x8F6C;&#x5316;&#x4E3A;List[T]</h3>
+<p>&#x5728;<code>Apache Commons</code>&#x5305;&#x91CC;&#x9762;&#x4F3C;&#x4E4E;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x79CD;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x95F4;&#x8F6C;&#x5316;&#x7684;&#x8BED;&#x4E49;&#xFF0C;&#x800C;<code>Guava</code>&#x4E2D;&#x8FDB;&#x884C;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x7684;&#x8BED;&#x4E49;&#x53EB;&#x505A;<code>transform</code>&#xFF1A;</p>
+<pre><code>// import com.google.common.collect.Lists
+List&lt;String&gt; list = Lists.newArrayList(&quot;abc&quot;, &quot;edf&quot;, &quot;afr&quot;);
+List&lt;Character&gt; characters = Lists.transform(list, s -&gt; s.charAt(0));
+// characters = [a, e, a]
+</code></pre><h3 id="liste&#x8FC7;&#x6EE4;&#x4E3A;liste">List[E]&#x8FC7;&#x6EE4;&#x4E3A;List[E]</h3>
+<p>&#x8BE1;&#x5F02;&#x7684;&#x662F;&#xFF0C;&#x65E0;&#x8BBA;<code>commons-collections4</code>&#x8FD8;&#x662F;<code>guava</code>&#xFF0C;&#x90FD;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;List&#x7684;filter&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>guava</code>&#x7684;<code>Collections2</code>&#x95F4;&#x63A5;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>// import com.google.common.collect.Collections2
+List&lt;String&gt; list = Lists.newArrayList(&quot;abc&quot;, &quot;edf&quot;, &quot;afr&quot;);
+List&lt;String&gt; characters = new ArrayList&lt;&gt;(Collections2.filter(list, s -&gt; s.startsWith(&quot;a&quot;)));
+// characters = [abc, afr]
+</code></pre><h3 id="setf&#x8F6C;&#x5316;&#x4E3A;sett">Set[F]&#x8F6C;&#x5316;&#x4E3A;Set[T]</h3>
+<p>&#x6216;&#x8BB8;&#x56E0;&#x4E3A;Set&#x8F6C;&#x5316;&#x4E4B;&#x540E;&#x76EE;&#x6807;&#x96C6;&#x5408;&#x548C;&#x539F;&#x96C6;&#x5408;&#x4E0D;&#x4E00;&#x5B9A;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;<code>Guava</code>&#x6CA1;&#x6709;&#x4E3A;Set&#x63D0;&#x4F9B;<code>transform</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>Collections2</code>&#x95F4;&#x63A5;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>// import com.google.common.collect.Collections2
+Set&lt;String&gt; set = Sets.newHashSet(&quot;abc&quot;, &quot;edf&quot;, &quot;afr&quot;);
+Set&lt;Character&gt; characters = new HashSet&lt;&gt;(Collections2.transform(set, s -&gt; s.charAt(0)));
+// characters = [a, e]
+</code></pre><h3 id="sete&#x8FC7;&#x6EE4;&#x4E3A;sete">Set[E]&#x8FC7;&#x6EE4;&#x4E3A;Set[E]</h3>
+<pre><code>// import com.google.common.collect.Sets
+Set&lt;String&gt; set = Sets.newHashSet(&quot;abc&quot;, &quot;edf&quot;, &quot;afr&quot;);
+Set&lt;String&gt; characters = Sets.filter(set, s -&gt; s.startsWith(&quot;a&quot;));
+// characters = [abc, afr]
+</code></pre>
                                 
                                 </section>
                             
@@ -244,10 +344,14 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 集合">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 集合">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="iterable2array.html" class="navigation navigation-next " aria-label="Next page: Iterable到Array">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -256,7 +360,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Iterable到Iterable","level":"2.1.1","depth":2,"previous":{"title":"集合","level":"2.1","depth":1,"path":"collection/README.md","ref":"collection/README.md","articles":[{"title":"Iterable到Iterable","level":"2.1.1","depth":2,"path":"collection/iterable2iterable.md","ref":"collection/iterable2iterable.md","articles":[]}]},"dir":"neutral"},"config":{"plugins":["multipart","theme-comscore","-sharing","-lunr","-search","search-plus","toc2","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toc2":{},"multipart":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":1},"highlight":{},"theme-comscore":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Project Home":"https://github.com/modoc/java-libraries-guide"}},"gitbook":"*"},"file":{"path":"collection/iterable2iterable.md","mtime":"2019-09-02T07:39:09.533Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-02T08:02:31.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Iterable到Iterable","level":"2.1.1","depth":2,"next":{"title":"Iterable到Array","level":"2.1.2","depth":2,"path":"collection/iterable2array.md","ref":"collection/iterable2array.md","articles":[]},"previous":{"title":"集合","level":"2.1","depth":1,"path":"collection/README.md","ref":"collection/README.md","articles":[{"title":"Iterable到Iterable","level":"2.1.1","depth":2,"path":"collection/iterable2iterable.md","ref":"collection/iterable2iterable.md","articles":[]},{"title":"Iterable到Array","level":"2.1.2","depth":2,"path":"collection/iterable2array.md","ref":"collection/iterable2array.md","articles":[]},{"title":"创建Map","level":"2.1.3","depth":2,"path":"collection/mapnew.md","ref":"collection/mapnew.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["multipart","theme-comscore","-sharing","-lunr","-search","search-plus","toc2","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toc2":{},"multipart":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":1},"highlight":{},"theme-comscore":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Project Home":"https://github.com/modoc/java-libraries-guide"}},"gitbook":"*"},"file":{"path":"collection/iterable2iterable.md","mtime":"2019-09-03T03:01:44.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-03T03:10:36.452Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
