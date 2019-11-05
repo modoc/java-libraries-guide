@@ -11,7 +11,7 @@
     sth.setValue(false);
     sth.setTrue();
 
-### OrAndXor
+### or xor and
 
 `MutableBoolean`封装有点美中不足的是，没有提供`or`/`and`等方法，这些小工具在某些场景下还是很实用的，目前可以使用下面的工具方法替代，但还是不如集成到`MutableBoolean`简洁，某些语言中就直接集成到了bool型里：
 
